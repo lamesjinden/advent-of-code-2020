@@ -34,7 +34,7 @@
   (->> s
        (str/split-lines)
        (partition-by str/blank?)
-       (filter #(not (str/blank? %)))))
+       (filter #(not (every? str/blank? %)))))
 
 (defn index-by
   "accepts a number of map instances and produces a single map
