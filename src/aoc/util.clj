@@ -67,3 +67,14 @@
     (for [row (range rows)
           col (range cols)]
       [row col])))
+
+(defn count-by
+  "returns a map of the counts of the elements of coll keyed by the result
+  of f on each element. similar to group-by where values are counts of
+  items grouped by f. also, see frequencies"
+  [f coll]
+  (let [grouped (group-by f coll)]
+    (->> grouped
+         (map (fn [[k vs]]
+                {k (count vs)}))
+         (apply merge))))
